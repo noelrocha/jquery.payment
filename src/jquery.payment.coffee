@@ -1,4 +1,4 @@
-$ = jQuery
+$ = $$
 
 # Utils
 
@@ -93,8 +93,8 @@ luhnCheck = (num) ->
 
 hasTextSelected = ($target) ->
   # If some text is selected
-  return true if $target.prop('selectionStart')? and
-    $target.prop('selectionStart') isnt $target.prop('selectionEnd')
+  return true if $target.selectionStart? and
+    $target.selectionStart isnt $target.selectionEnd
 
   # If some text is selected in IE
   return true if document?.selection?.createRange?().text
@@ -120,8 +120,8 @@ formatCardNumber = (e) ->
   return if length >= upperLength
 
   # Return if focus isn't at the end of the text
-  return if $target.prop('selectionStart')? and
-    $target.prop('selectionStart') isnt value.length
+  return if $target.selectionStart? and
+    $target.selectionStart isnt value.length
 
   if card && card.type is 'amex'
     # Amex cards are formatted differently
@@ -146,8 +146,8 @@ formatBackCardNumber = (e) ->
   return if e.meta
 
   # Return if focus isn't at the end of the text
-  return if $target.prop('selectionStart')? and
-    $target.prop('selectionStart') isnt value.length
+  return if $target.selectionStart? and
+    $target.selectionStart isnt value.length
 
   # If we're backspacing, remove the trailing space
   if e.which is 8 and /\s\d?$/.test(value)
@@ -203,8 +203,8 @@ formatBackExpiry = (e) ->
   return unless e.which is 8
 
   # Return if focus isn't at the end of the text
-  return if $target.prop('selectionStart')? and
-    $target.prop('selectionStart') isnt value.length
+  return if $target.selectionStart? and
+    $target.selectionStart isnt value.length
 
   # Remove the trailing space
   if /\s\/\s?$/.test(value)
